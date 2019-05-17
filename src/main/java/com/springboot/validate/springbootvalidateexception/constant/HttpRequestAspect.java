@@ -79,6 +79,7 @@ public class HttpRequestAspect {
         log.info("后置切面after……");
     }
 
+    //此处通过反射修改注解的value值后数据还是没有变化 因为 方法查询放数据后 已经将具体的数据返回，就算修改玩注解的value值 但其不会在重新嗲用原型的请求。因而数据跟原先的一样。
     /*@AfterReturning注解用于获取方法的返回值*/
     @AfterReturning(pointcut = "print()", returning = "object")
     public void getAfterReturn(Object object) throws Exception {
