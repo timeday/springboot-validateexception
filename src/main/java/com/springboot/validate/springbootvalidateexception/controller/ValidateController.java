@@ -14,6 +14,11 @@ import org.springframework.web.bind.annotation.*;
 public class ValidateController {
 
 
+    /**
+     * 结果是空的
+     * @param userRequest
+     * @return
+     */
     @RequestMapping("/getUserOne")
     @JsonView(User.UserInfo.class)
     public RestResultWrapper getUserOne(@Validated UserRequest userRequest){
@@ -37,7 +42,16 @@ public class ValidateController {
         return "success";
     }
 
-
+    @RequestMapping("/getUser")
+    @JsonView(User.UserInfo.class)
+    public User getUser(@Validated UserRequest userRequest){
+        User user=new User();
+        user.setAddress("ssssssss");
+        user.setAge(20);
+        user.setBianhao(58588);
+        user.setName("天狗食日");
+        return user;
+    }
 
 
 }

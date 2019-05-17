@@ -25,6 +25,7 @@ public class RestResultWrapper<T> {
     private String message;
 
 
+    //此处没有定义具体的 value值
     @JsonView
     public T getResult() {
         return result;
