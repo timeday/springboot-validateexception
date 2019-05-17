@@ -1,6 +1,7 @@
 package com.springboot.validate.springbootvalidateexception.bean;
 
 import lombok.Data;
+import org.hibernate.validator.constraints.Range;
 
 import javax.validation.constraints.NotNull;
 
@@ -12,6 +13,7 @@ public class UserRequest {
 
     //{user.name.notblank} 从 ValidationMessages.properties 获取到的
     @NotNull(message = "{user.name.notblank}")
+    @Range(max = 150, min = 1, message = "年龄范围应该在1-150内。")
     private Integer age;
 
     @NotNull(message = "编号不能为空")

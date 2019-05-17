@@ -23,11 +23,7 @@ import javax.validation.constraints.NotBlank;
 //非对象接收的参数 在类上需要添加该注解
 @Validated
 public class UserController {
-
-
     private static final Logger log = LoggerFactory.getLogger(UserController.class);
-
-
     @RequestMapping("/getUserInfo")
     public RestResultWrapper getUserInfo(@NotBlank(message = "地址不能为空！") @RequestParam(name = "address") String Address){
         User user=new User();
@@ -37,10 +33,5 @@ public class UserController {
         user.setName("天狗食日");
         return new RestResultWrapper(user,0,"成功");
     }
-
-
-
-
-
 
 }

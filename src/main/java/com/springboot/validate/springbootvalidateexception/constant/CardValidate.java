@@ -30,9 +30,10 @@ public @interface CardValidate {
 
     class Validator implements ConstraintValidator<CardValidate, String> {
         @Override
-        public boolean isValid(String phone, ConstraintValidatorContext arg1){
-            if(!StringUtils.isEmpty(phone)){
-                //RegexValidateUtils.checkCard(phone)
+        public boolean isValid(String carid, ConstraintValidatorContext arg1){
+            if(!StringUtils.isEmpty(carid)){
+                //RegexValidateUtils.checkCard(carid)
+                //TODO 验证逻辑
                 return true;
             }else{
                 return true;
