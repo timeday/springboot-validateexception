@@ -18,6 +18,9 @@ import java.lang.reflect.Proxy;
 import java.util.Map;
 import java.util.Objects;
 
+/**
+ * 此处本来准备 动态修改 @JsonView 注解中的value 值 但是修改后还是不生效
+ */
 @Aspect
 @Component
 public class HttpRequestAspect {
@@ -85,7 +88,7 @@ public class HttpRequestAspect {
             Class<?> aClass = restResultWrapper.getClass();
             Method getResult = aClass.getMethod("getResult");
             JsonView annotation = getResult.getAnnotation(JsonView.class);
-            //获取 foo 这个代理实例所持有的 InvocationHandler
+            //获取 annotation 这个代理实例所持有的 InvocationHandler
             InvocationHandler h = Proxy.getInvocationHandler(annotation);
             // 获取 AnnotationInvocationHandler 的 memberValues 字段
             Field hField = h.getClass().getDeclaredField("memberValues");
@@ -94,9 +97,7 @@ public class HttpRequestAspect {
             // 获取 memberValues
             Map memberValues = (Map) hField.get(h);
             // 修改 value 属性值
-            memberValues.put("value", User.UserInfo.class);
-
-            System.out.println(annotation.value());
+            memberValues.put("value", valueinfo);
         }
         log.info("本次接口耗时={}ms", endTime);
         log.info("afterReturning={}", object.toString());

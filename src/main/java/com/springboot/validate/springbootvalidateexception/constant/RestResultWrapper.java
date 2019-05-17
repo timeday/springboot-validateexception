@@ -1,5 +1,6 @@
 package com.springboot.validate.springbootvalidateexception.constant;
 
+import com.fasterxml.jackson.annotation.JsonView;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -24,6 +25,7 @@ public class RestResultWrapper<T> {
     private String message;
 
 
+    @JsonView
     public T getResult() {
         return result;
     }
