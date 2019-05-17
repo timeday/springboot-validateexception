@@ -88,7 +88,7 @@ public class HttpRequestAspect {
             Class<?> aClass = restResultWrapper.getClass();
             Method getResult = aClass.getMethod("getResult");
             JsonView annotation = getResult.getAnnotation(JsonView.class);
-            //获取 annotation 这个代理实例所持有的 InvocationHandler
+            //获取 annotation这个代理实例所持有的 InvocationHandler
             InvocationHandler h = Proxy.getInvocationHandler(annotation);
             // 获取 AnnotationInvocationHandler 的 memberValues 字段
             Field hField = h.getClass().getDeclaredField("memberValues");
